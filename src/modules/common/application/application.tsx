@@ -1,0 +1,17 @@
+import {render as reactRender} from "react-dom";
+import {IApplication} from "./iapplication";
+import {PromiseFactory, Promise} from "../models/promise";
+import {ILayout} from "./ilayout";
+import uiHelper from "../helpers/uiHelper";
+export class Application implements IApplication{
+    protected layout:ILayout;
+    public setLayout(layout: ILayout):void{
+        this.layout=layout;
+    }
+    public render(targetSelector: string):Promise<any>{
+        let def:Promise<IApplication> = PromiseFactory.create<IApplication>();
+        reactRender(this.layout, uiHelper.getElement(targetSelector));
+        def.resolve(this);
+        return def;
+    }
+}

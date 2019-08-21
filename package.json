@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":"webpack --mode development"
+    "build": "webpack --mode development"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,9 @@
   },
   "homepage": "https://github.com/enterprise-developer/react-nodejs#readme",
   "devDependencies": {
+    "@types/react": "^16.9.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
     "webpack": "^4.39.2",
