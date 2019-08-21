@@ -1,5 +1,5 @@
 import * as React from "react";
-import {IApplication, ApplicationFactory, IApplicationOption} from "@app/common";
+import {IApplication, ApplicationFactory, IApplicationOption, ISiteOption} from "@app/common";
 import {Layout} from "@app/layouts/default";
 export class Main{
     readonly ROOT_CONTAINER="root";
@@ -11,8 +11,14 @@ export class Main{
     }
 
     private getOption():IApplicationOption{
+        let siteOption:ISiteOption={
+            name:"React/ NodeJs"
+        };
         return {
-            layout: <Layout />
+            layout:<Layout site={siteOption} />,
+            layoutOption:{
+                site:siteOption
+            }
         };
     }
 }

@@ -13,7 +13,8 @@ module.exports={
     resolve:{
         alias:{
             "@app/common":path.resolve(__dirname, "src/modules/common/index"),
-            "@app/layouts/default":path.resolve(__dirname, "src/layouts/default/index")
+            "@app/layouts/default":path.resolve(__dirname, "src/layouts/default/index"),
+            "@app/ui":path.resolve(__dirname, "src/modules/ui/index")
         },
         extensions:[".tsx", ".ts", ".js", "jsx"]
     },

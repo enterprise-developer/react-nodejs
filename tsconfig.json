@@ -8,6 +8,7 @@
         ],
         "paths": {
             "@app/common":["./src/modules/common/index"],
+            "@app/ui":["./src/modules/ui/index"],
             "@app/layouts/default":["src/layouts/default/index"]
         }
     },
