@@ -1,0 +1,32 @@
+{
+  "name": "react-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"webpack --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enterprise-developer/react-nodejs.git"
+  },
+  "keywords": [
+    "react",
+    "nodejs",
+    "enterprise",
+    "application"
+  ],
+  "author": "Tu Tran (https://www.tranthanhtu.vn)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enterprise-developer/react-nodejs/issues"
+  },
+  "homepage": "https://github.com/enterprise-developer/react-nodejs#readme",
+  "devDependencies": {
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
+  }
+}
