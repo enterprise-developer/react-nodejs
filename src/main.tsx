@@ -1,16 +1,22 @@
+///<preference path="./extension.d.tsx" />
 import * as React from "react";
-import {IApplication, ApplicationFactory, IApplicationOption, ISiteOption} from "@app/common";
+import {Promise, IoCFactory, IApplication, ApplicationFactory, IApplicationOption, ISiteOption, IoCNames, AuthConst} from "@app/common";
 import {Layout} from "@app/layouts/default";
+//import appOption from "./apps/default/config/appOption";
+import iocRegistrations from "./apps/default/config/ioc";
+import { ICacheManager } from "./modules/common/cache/icacheManager";
+import { IResourceManager } from "@app/common";
+import { IAppSetting } from "./modules/common/services/iappSetting";
 export class Main{
     readonly ROOT_CONTAINER="root";
     public render():void{
-        let option: IApplicationOption = this.getOption();
+        let option: IApplicationOption = Main.getOption();
         let application:IApplication = ApplicationFactory.create();
         application.setLayout(option.layout);
         application.render(this.ROOT_CONTAINER);
     }
 
-    private getOption():IApplicationOption{
+    public static getOption():IApplicationOption{
         let siteOption:ISiteOption={
             name:"React/ NodeJs"
         };
@@ -18,8 +24,28 @@ export class Main{
             layout:<Layout site={siteOption} />,
             layoutOption:{
                 site:siteOption
+            },
+            language:{
+                name:"English",
+                code:"en"
             }
         };
     }
 }
-new Main().render();
+let ioc: IIoCContainer = IoCFactory.createContainer({registrations: iocRegistrations});
+window.ioc=ioc;
+let appOption: IApplicationOption= Main.getOption();
+let appSetting:IAppSetting = window.ioc.resolve(IoCNames.IAppSetting);
+appSetting.setOption(appOption);
+let resourceManager:IResourceManager = window.ioc.resolve(IoCNames.IResourceManager);
+Promise.all([
+    resourceManager.loadLocales(appConfig.locales)
+]).then(()=>{
+    initTestData();
+    new Main().render();
+});
+// init user profile
+function initTestData(){
+    let cacheManager:ICacheManager = window.ioc.resolve(IoCNames.ICacheManager);
+    cacheManager.set(AuthConst.CACHE_USERPROFILE,{avatarUri:"http://www.tranthanhtu.vn/avatar.jpg", fullName:"Tu Tran"});
+}

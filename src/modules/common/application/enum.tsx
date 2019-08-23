@@ -1,4 +1,4 @@
-import { ILayout } from "./ilayout";
+import { ILanguageOption } from "../enum";
 export interface ISiteOption{
     name:string;
 }
@@ -7,5 +7,6 @@ export interface ILayoutOption{
 }
 export interface IApplicationOption{
     layout:any,
-    layoutOption: ILayoutOption
+    layoutOption: ILayoutOption;
+    language: ILanguageOption;
 }
