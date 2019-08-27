@@ -21,7 +21,9 @@ export interface ILanguageOption{
 }
 
 export enum AppConst{
-    DEFAULT_LANGUAGE_CODE="APPLICATION.DEFAULT_LANGUAGE_CODE"
+    DEFAULT_LANGUAGE_CODE="APPLICATION.DEFAULT_LANGUAGE_CODE",
+    LOCALE_ENDPOINT = "APPLICATION.LOCALE_ENDPOINT"
+
 }
 
 export enum HttpConst{
@@ -31,4 +33,13 @@ export enum HttpConst{
 
 export enum ConnectorType{
     JSON="JSON"
+}
+
+export enum HttpStatusCode{
+    OK=200,
+    BadRequest=400
+}
+export interface IAppSettingItem{
+    name:string,
+    value:any;
 }

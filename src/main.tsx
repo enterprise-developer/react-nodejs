@@ -1,6 +1,6 @@
 ///<preference path="./extension.d.tsx" />
 import * as React from "react";
-import {Promise, IoCFactory, IApplication, ApplicationFactory, IApplicationOption, ISiteOption, IoCNames, AuthConst} from "@app/common";
+import {Promise, IoCFactory, IApplication, ApplicationFactory, IApplicationOption, ISiteOption, IoCNames, AuthConst, AppConst} from "@app/common";
 import {Layout} from "@app/layouts/default";
 //import appOption from "./apps/default/config/appOption";
 import iocRegistrations from "./apps/default/config/ioc";
@@ -28,7 +28,11 @@ export class Main{
             language:{
                 name:"English",
                 code:"en"
-            }
+            },
+            settings:[
+                {name: AppConst.LOCALE_ENDPOINT, value:"/src/resources/locales/"}
+            ],
+            locales:["layout"]
         };
     }
 }
@@ -39,7 +43,7 @@ let appSetting:IAppSetting = window.ioc.resolve(IoCNames.IAppSetting);
 appSetting.setOption(appOption);
 let resourceManager:IResourceManager = window.ioc.resolve(IoCNames.IResourceManager);
 Promise.all([
-    resourceManager.loadLocales(appConfig.locales)
+    resourceManager.loadLocales(appOption.locales)
 ]).then(()=>{
     initTestData();
     new Main().render();

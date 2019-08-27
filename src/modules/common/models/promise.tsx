@@ -36,7 +36,7 @@ export class Promise<TEntity={}>{
         }
     }
     public subscribe(callback: (def: Promise<any>)=>void):Promise<TEntity>{
-        this.status=PromiseStatus.Subscribe;
+        //this.status=PromiseStatus.Subscribe;
         this.subscribeCallback=callback;
         this.process();
         return this;
@@ -45,16 +45,17 @@ export class Promise<TEntity={}>{
         let def:Promise<any>=PromiseFactory.create();
         if(!subDefs || subDefs.length==0){return def.resolve();}
         let self=this;
-        subDefs.forEach((subDef: Promise<any>)=>{
+        subDefs.forEach((subDef: Promise<any>)=>{   
             def.queue.push(subDef.id);
-            subDef.subscribe((def: Promise<any>)=>{
-                def.onSubPromiseCompleted(def);
+            subDef.status=PromiseStatus.Subscribe;
+            subDef.subscribe((subDef1: Promise<any>)=>{
+                def.onSubPromiseCompleted(subDef1);
             })
         });
         return def;
     }
     public then(callback: (arg?:TEntity)=>void):Promise<TEntity>{
-        this.status=PromiseStatus.Success;
+        //this.status=PromiseStatus.Success;
         this.successCallback=callback;
         this.process();
         return this;

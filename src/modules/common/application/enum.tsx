@@ -1,4 +1,4 @@
-import { ILanguageOption } from "../enum";
+import { ILanguageOption, IAppSettingItem } from "../enum";
 export interface ISiteOption{
     name:string;
 }
@@ -9,4 +9,6 @@ export interface IApplicationOption{
     layout:any,
     layoutOption: ILayoutOption;
     language: ILanguageOption;
+    settings:Array<IAppSettingItem>;
+    locales:Array<string>;
 }

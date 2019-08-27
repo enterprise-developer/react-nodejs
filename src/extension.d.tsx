@@ -26,4 +26,5 @@ interface Array<T>{
 
 interface StringConstructor{
     format(...params:Array<any>):string;
+    empty:string;
 }
