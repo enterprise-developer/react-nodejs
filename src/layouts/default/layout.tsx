@@ -1,11 +1,16 @@
 import * as React from "react";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 import {ILayoutOption} from "@app/common";
 import {Style} from "@app/ui";
 import {SiteName}  from "./components/siteName";
 import {UserProfile} from "./components/user/profile";
+import {MainLeftNav} from "./components/nav/mainLeftNav";
 import { BaseLayout } from "@app/common";
 export class Layout extends BaseLayout<ILayoutOption>{
-    public render():any{
+    constructor(props: any) {
+        super(props);
+    }
+    public internalRender():any{
         return (
             <div>
                 <Style uri="/src/layouts/default/vendors/bootstrap/dist/css/bootstrap.min.css"/>
@@ -22,20 +27,28 @@ export class Layout extends BaseLayout<ILayoutOption>{
                                 <UserProfile />
                             </div>
                         </div>
-                        <div className="top_nav">
-                            top nav
-                        </div>
-                        <div className="right_col" role="main"></div>
-                            right column
+                        <Router>
+                            <div className="top_nav">
+                                <MainLeftNav />
+                            </div>
+                            <div className="right_col" role="main">
+                                <Route path="/userManagement" component={UserManagement} />
+                            </div>
+                        </Router>
                         <footer>
-                        <div className="pull-right">
-                            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-                        </div>
-                        <div className="clearfix"></div>
+                            <div className="pull-right">{this.i18n.layout.footer}</div>
+                            <div className="clearfix"></div>
                         </footer>
                     </div>
                 </div>
             </div>
+        );
+    }
+}
+class UserManagement extends React.Component{
+    public render():JSX.Element{
+        return (
+            <div>Just for testing</div>
         );
     }
 }

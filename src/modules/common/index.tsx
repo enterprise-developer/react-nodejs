@@ -18,6 +18,7 @@ export * from "./cache/memoryCacheManager";
 export * from "./services/resourceManager";
 export * from "./services/iresourceManager";
 export * from "./services/appSetting";
+export * from "./services/iappSetting";
 export * from "./services/localeService";
 
 export * from "./models/promise";

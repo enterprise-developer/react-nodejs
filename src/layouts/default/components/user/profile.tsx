@@ -2,9 +2,6 @@ import * as React from "react";
 import helperFacade, { BaseComponent, IUserProfile } from "@app/common";
 
 export class UserProfile extends BaseComponent<any, IUserProfile>{
-    constructor(pros: any){
-      super(pros);
-    }
     public rendering(){
       this.state = helperFacade.authHelper.getAuthProfile();
     }

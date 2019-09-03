@@ -43,3 +43,15 @@ export interface IAppSettingItem{
     name:string,
     value:any;
 }
+
+export interface IMenuItem{
+    text:string;
+    cls:string;
+    uri:string;
+}
+
+export interface IAppModule{
+    name:string;
+    iconCls:string;
+    defaultUri:string;
+}

@@ -1,5 +1,5 @@
 import { IAppSetting } from "./iappSetting";
-import {AppConst, IAppSettingItem} from "../enum";
+import {AppConst, IAppSettingItem, IAppModule} from "../enum";
 import { IApplicationOption } from "../application/enum";
 
 export class AppSetting implements IAppSetting{
@@ -23,5 +23,7 @@ export class AppSetting implements IAppSetting{
         }
         return item.value;
     }
-
+    public getModules():Array<IAppModule>{
+        return this.appOption.modules;
+    }
 }
