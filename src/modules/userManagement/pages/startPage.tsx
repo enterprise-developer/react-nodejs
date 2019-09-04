@@ -1,14 +1,20 @@
-import { BaseComponent } from "@app/common";
+import { BaseComponent, IRouteItem } from "@app/common";
 import * as React from "react";
-import {BrowserRouter as Router, Route} from "react-router-dom";
-import Users from "./users";
+import {Route} from "react-router-dom";
+import routes from "../_share/config/routes";
 
 export default class StartPage extends BaseComponent<any>{
     public internalRender():JSX.Element{
         return (
-            <Router>
-                <Route path="/" component={Users}/>
-            </Router>
+            <switch>
+                {
+                    routes.map((item: IRouteItem, index: number)=>{
+                        return <Route exact={item.isExtact||false} key={index} path={item.uri} component={item.component}/>
+                    })
+                }
+            </switch>
         );
+    }
+    public rendered(){
     }
 }

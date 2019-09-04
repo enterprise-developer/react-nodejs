@@ -22,6 +22,11 @@ export class MainLeftNav extends BaseComponent<IMainLeftNav>{
   }
   public internalRender():JSX.Element{
     let items: Array<IMenuItem> = this.getMenuItems();
+    items.push({
+      cls: "fa fa-pencil",
+      text: "add new user",
+      uri: "/userManagement/addNewUser"
+    });
       return (
           <div id="sidebar-menu" className="main_menu_side hidden-print main_menu">
             <div className="menu_section">

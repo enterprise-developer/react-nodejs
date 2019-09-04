@@ -50,7 +50,11 @@ export interface IMenuItem{
     uri:string;
     component?:any;
 }
-
+export interface IRouteItem{
+    uri:string;
+    component: any;
+    isExtact?: boolean;
+}
 export interface IAppModule{
     key:string;
     name:string;
