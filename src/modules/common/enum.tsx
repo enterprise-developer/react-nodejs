@@ -48,9 +48,11 @@ export interface IMenuItem{
     text:string;
     cls:string;
     uri:string;
+    component?:any;
 }
 
 export interface IAppModule{
+    key:string;
     name:string;
     iconCls:string;
     defaultUri:string;

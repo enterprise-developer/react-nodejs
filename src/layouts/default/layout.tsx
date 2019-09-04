@@ -1,6 +1,6 @@
 import * as React from "react";
 import {BrowserRouter as Router, Route} from "react-router-dom";
-import helperFacade, { ILayoutOption } from "@app/common";
+import helperFacade, { ILayoutOption, IMenuItem, IAppSetting, IoCNames, IAppModule } from "@app/common";
 import {Style} from "@app/ui";
 import {SiteName}  from "./components/siteName";
 import {UserProfile} from "./components/user/profile";
@@ -14,7 +14,20 @@ export class Layout extends BaseLayout<ILayoutOption>{
     public rendering(){
         helperFacade.uiHelper.appendClass("body","nav-md");
     }
+    private getMenuItems():Array<IMenuItem>{
+        let appSetting: IAppSetting = window.ioc.resolve(IoCNames.IAppSetting);
+        let modules:Array<IAppModule> = appSetting.getModules();
+        return modules.map((item: IAppModule, index: number)=>{
+          return {
+            cls: item.iconCls,
+            text: item.name,
+            uri: item.defaultUri,
+            component: (React.lazy(() =>import("../../modules/"+item.key+"/pages/startPage")))
+          }
+        });
+      }
     public internalRender():any{
+        let items: Array<IMenuItem> = this.getMenuItems();
         return (
             <div>
                 <Style uri="/src/layouts/default/vendors/bootstrap/dist/css/bootstrap.min.css"/>
@@ -36,7 +49,14 @@ export class Layout extends BaseLayout<ILayoutOption>{
                             </div>
                             <MainTopNav />
                             <div className="right_col" role="main">
-                                <Route path="/userManagement" component={UserManagement} />
+                                <Route exact path="/" component={Overview} />
+                                <React.Suspense fallback={<div>Loading ...</div>}>
+                                    {
+                                        items.map((item: IMenuItem, index: number)=>{
+                                            return <Route key={index} path={item.uri} component={item.component} />
+                                        })
+                                    }
+                                </React.Suspense>
                             </div>
                         </Router>
                         <footer>
@@ -47,6 +67,11 @@ export class Layout extends BaseLayout<ILayoutOption>{
                 </div>
             </div>
         );
+    }
+}
+class Overview extends React.Component{
+    public render():JSX.Element{
+        return (<div>Overview component</div>);
     }
 }
 class UserManagement extends React.Component{

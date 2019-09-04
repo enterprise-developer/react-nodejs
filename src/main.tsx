@@ -35,7 +35,7 @@ export class Main{
                 {name: AppConst.LOCALE_ENDPOINT, value:"/src/resources/locales/"}
             ],
             modules:[
-                {name: "User management", iconCls: "fa fa-user", defaultUri:"/userManagement"}
+                {name: "User management",key:"userManagement", iconCls: "fa fa-user", defaultUri:"/userManagement"}
             ],
             locales:["layout"]
         };
