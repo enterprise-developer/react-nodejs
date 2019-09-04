@@ -12,8 +12,10 @@ export class Main{
     public render():void{
         let option: IApplicationOption = Main.getOption();
         let application:IApplication = ApplicationFactory.create();
+        application.rendering();
         application.setLayout(option.layout);
         application.render(this.ROOT_CONTAINER);
+        application.rendered();
     }
 
     public static getOption():IApplicationOption{

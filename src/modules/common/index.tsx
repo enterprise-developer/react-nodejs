@@ -1,4 +1,5 @@
 import authHelper from "./auth/authHelper";
+import uiHelper from "./helpers/uiHelper";
 
 export * from "./enum";
 export * from "./application/iapplication";
@@ -24,6 +25,7 @@ export * from "./services/localeService";
 export * from "./models/promise";
 
 const helperFacade={
-    authHelper: authHelper
+    authHelper: authHelper,
+    uiHelper: uiHelper
 };
 export default helperFacade;

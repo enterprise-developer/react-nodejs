@@ -4,6 +4,7 @@ interface IIoCContainer{
 }
 interface Window{
     ioc: IIoCContainer;
+    $: any;
 }
 
 interface Array<T>{
@@ -24,7 +25,11 @@ interface Array<T>{
     clearAll():void;
 }
 
-interface StringConstructor{
-    format(...params:Array<any>):string;
-    empty:string;
+interface StringConstructor {
+    format(...params: Array<any>): string;
+    isNullOrWhiteSpace(value: string): boolean;
+    empty: string;
+    firstCharToLower(str: string): string;
+    toPascalCase(str: string): string;
+    toCamelCase(str: string): string;
 }
