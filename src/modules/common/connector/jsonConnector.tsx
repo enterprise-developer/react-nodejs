@@ -3,6 +3,7 @@ import { Promise, PromiseFactory } from "../models/promise";
 import {IResponseData} from "../data/iresponseData";
 
 export class JsonConnector implements IConnector{
+    // handle error
     public get(uri:string):Promise<any>{
         let def:Promise<any>=PromiseFactory.create();
         fetch(uri)

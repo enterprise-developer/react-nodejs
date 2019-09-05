@@ -23,6 +23,10 @@ export * from "./services/iappSetting";
 export * from "./services/localeService";
 
 export * from "./models/promise";
+export * from "./services/baseService";
+
+export * from "./connector/connectorFactory";
+export * from "./connector/iconnector";
 
 const helperFacade={
     authHelper: authHelper,

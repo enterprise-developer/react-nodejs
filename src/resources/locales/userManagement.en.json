@@ -1,0 +1,8 @@
+{
+    "users":{
+        "pageTitle":"Manage Users",
+        "firstName":"First name",
+        "lastName":"Last name",
+        "userName":"User name"
+    }
+}

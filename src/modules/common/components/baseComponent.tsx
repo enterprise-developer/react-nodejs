@@ -4,8 +4,9 @@ import { IoCNames } from "../enum";
 export class BaseComponent<TContext, State={}> extends React.Component<TContext>{
     public state:State;
     protected readonly i18n: any;
-    constructor(props: any){
+    constructor(props: any, state?: State){
         super(props);
+        this.state=state||{} as State;
         let resourceManager: IResourceManager = window.ioc.resolve(IoCNames.IResourceManager);
         this.i18n=resourceManager.getLocales();
     }

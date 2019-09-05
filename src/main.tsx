@@ -32,12 +32,13 @@ export class Main{
                 code:"en"
             },
             settings:[
-                {name: AppConst.LOCALE_ENDPOINT, value:"/src/resources/locales/"}
+                {name: AppConst.LOCALE_ENDPOINT, value:"/src/resources/locales/"},
+                {name: "USER_MANAGEMENT.API_ENDPOINT", value:"/api/userManagement/"}
             ],
             modules:[
                 {name: "User management",key:"userManagement", iconCls: "fa fa-user", defaultUri:"/userManagement"}
             ],
-            locales:["layout"]
+            locales:["layout", "userManagement"]
         };
     }
 }
@@ -47,9 +48,7 @@ let appOption: IApplicationOption= Main.getOption();
 let appSetting:IAppSetting = window.ioc.resolve(IoCNames.IAppSetting);
 appSetting.setOption(appOption);
 let resourceManager:IResourceManager = window.ioc.resolve(IoCNames.IResourceManager);
-Promise.all([
-    resourceManager.loadLocales(appOption.locales)
-]).then(()=>{
+resourceManager.loadLocales(appOption.locales).then(()=>{
     initTestData();
     new Main().render();
 });

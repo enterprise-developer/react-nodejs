@@ -11,20 +11,22 @@ export class ResourceManager implements IResourceManager{
     }
 
     public loadLocales(locales:Array<string>):Promise<any>{
-        let loadRequests:Array<Promise>=[];
+        let loadRequests:Array<Promise<any>>=[];
         let appSetting: IAppSetting = window.ioc.resolve(IoCNames.IAppSetting);
         let lng:string = appSetting.getLanguageCode();
         let localeService:ILocaleservice = window.ioc.resolve(IoCNames.ILocaleService);
         let self=this;
+        let localeDef: Promise<any>=PromiseFactory.create<any>();
         locales.forEach((locale:string)=>{
             let def: Promise<any>=PromiseFactory.create();
-            loadRequests.push(def);
+            //loadRequests.push(def);
+            localeDef.resolveAll(def);
             let uri:string=String.format("{0}.{1}.json", locale, lng);
             localeService.getLocale(uri).then((data: any)=>{
                 self.locales[locale]=data;
                 def.resolve({});
             });
         });
-        return Promise.all(loadRequests);
+        return localeDef;// PromiseFactory.create<any>().resolveAll(loadRequests);
     }
 }
