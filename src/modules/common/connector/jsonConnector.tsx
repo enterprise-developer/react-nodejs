@@ -7,7 +7,9 @@ export class JsonConnector implements IConnector{
     public get(uri:string):Promise<any>{
         let def:Promise<any>=PromiseFactory.create();
         fetch(uri)
-        .then((response: any)=>{return response.json();})
+        .then((response: any)=>{
+            return response.json();
+        })
         .then((dataInResponse: IResponseData)=>{
             if(dataInResponse.errors && dataInResponse.errors.length>0){
                 // need to handle error

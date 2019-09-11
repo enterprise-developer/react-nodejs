@@ -10,6 +10,9 @@ export class BaseComponent<TContext, State={}> extends React.Component<TContext>
         let resourceManager: IResourceManager = window.ioc.resolve(IoCNames.IResourceManager);
         this.i18n=resourceManager.getLocales();
     }
+    protected navigate(uri:string):void{
+        this.props["history"].push(uri);
+    }
     public render():JSX.Element{
         this.rendering();
         let component:JSX.Element = this.internalRender();

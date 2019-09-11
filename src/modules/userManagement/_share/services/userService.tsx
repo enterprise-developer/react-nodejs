@@ -6,7 +6,7 @@ export class UserService extends BaseService implements IUserService{
         super(Const.API_ENDPOINT);
     }
     public getUsers():Promise<any>{
-        let uri:string=this.resolveUri("users.json");
+        let uri:string=this.resolveUri("users");
         let connector: IConnector = ConnectorFactory.create(ConnectorType.JSON);
         return connector.get(uri);
     }

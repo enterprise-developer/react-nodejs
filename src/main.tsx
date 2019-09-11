@@ -33,7 +33,7 @@ export class Main{
             },
             settings:[
                 {name: AppConst.LOCALE_ENDPOINT, value:"/src/resources/locales/"},
-                {name: "USER_MANAGEMENT.API_ENDPOINT", value:"/api/userManagement/"}
+                {name: "USER_MANAGEMENT.API_ENDPOINT", value:"http://training.tinyerp.com/api/"}
             ],
             modules:[
                 {name: "User management",key:"userManagement", iconCls: "fa fa-user", defaultUri:"/userManagement"}
