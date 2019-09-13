@@ -1,8 +1,8 @@
-import { BaseComponent } from "@app/common";
+import { BaseComponent, IMutable, Mutable } from "@app/common";
 import {ButtonDefault, FormHorizontal, FormTextInput, FormFooter,ButtonPrimary} from "@app/ui";
 import * as React from "react";
 import { IUser } from "../_share/enum";
-export class EditUser extends BaseComponent<IUser, IUser>{
+export class EditUser extends BaseComponent<IUser, EditUserModel>{
     /**
      *
      */
@@ -10,11 +10,7 @@ export class EditUser extends BaseComponent<IUser, IUser>{
         super(
             props
         );
-        this.state={
-            firstName:"",
-            lastName:"",
-            userName:""
-        } as IUser;
+        this.state=new EditUserModel();
     }
     private onCancelClicked():void{
         console.log("onCancelClicked");
@@ -47,4 +43,15 @@ export class EditUser extends BaseComponent<IUser, IUser>{
             </FormHorizontal>
         );
     }
+}
+class EditUserModel{
+    public firstName:IMutable;
+    public lastName:IMutable;
+    public userName:IMutable;
+    constructor() {
+        this.firstName=new Mutable();
+        this.lastName=new Mutable();
+        this.userName=new Mutable();
+    }
+
 }

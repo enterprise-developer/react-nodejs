@@ -1,14 +1,20 @@
 import * as React from "react";
-import { BaseComponent } from "@app/common";
+import { BaseComponent, IMutable, Mutable } from "@app/common";
 import { IFormInput } from "../enum";
 export class FormTextInput extends BaseComponent<IFormInput, IFormInput>{
+    private value:any;
     constructor(props: any) {
         super(props);
-        this.state.value=props.value;
+        this.value=props.value;
     }
     private onValueChanged(e: any):void{
         e.preventDefault();
-        this.setState({value: e.target.value});
+        if(this.value instanceof Mutable){
+            let value:IMutable = this.value as IMutable;
+            value.onChanged(e.target.value);
+            return;
+        }
+        this.value=e.target.value;
     }
     public internalRender():JSX.Element{
         return (

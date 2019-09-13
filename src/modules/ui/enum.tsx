@@ -1,9 +1,10 @@
 export interface IFormInput{
     label:string;
-    value:string;
+    value:any;
 }
 export interface IButton{
     text:string;
     class?:string;
     onClicked:()=>void;
 }
+

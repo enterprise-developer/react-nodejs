@@ -28,6 +28,8 @@ export * from "./services/baseService";
 export * from "./connector/connectorFactory";
 export * from "./connector/iconnector";
 
+export * from "./models/mutable";
+
 const helperFacade={
     authHelper: authHelper,
     uiHelper: uiHelper

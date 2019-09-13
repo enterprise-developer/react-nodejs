@@ -61,3 +61,7 @@ export interface IAppModule{
     iconCls:string;
     defaultUri:string;
 }
+export interface IMutable{
+    value:any;
+    onChanged:(val: any)=>void;
+}
