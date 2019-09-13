@@ -2,8 +2,8 @@ import * as React from "react";
 import {BaseComponent} from "@app/common";
 import {Page, IconEdit} from "@app/ui";
 import { IUserService } from "../_share/services/iuserService";
-import {LocalIoCNames} from "../_share/enum";
-import {UserViewModel, IUserViewModel, IUser} from "./userViewModel";
+import {LocalIoCNames, IUser} from "../_share/enum";
+import {UserViewModel, IUserViewModel} from "./userViewModel";
 export default class Users extends BaseComponent<any, IUserViewModel>{
     constructor(pros: any) {
         super(pros, new UserViewModel());

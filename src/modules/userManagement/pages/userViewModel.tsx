@@ -1,9 +1,5 @@
-export interface IUser{
-    id:string;
-    firstName:string;
-    lastName:string;
-    userName:string;
-}
+import { IUser } from "../_share/enum";
+
 export interface IUserViewModel{
     items:Array<IUser>;
 }

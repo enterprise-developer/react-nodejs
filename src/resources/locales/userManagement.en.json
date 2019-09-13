@@ -4,5 +4,10 @@
         "firstName":"First name",
         "lastName":"Last name",
         "userName":"User name"
+    },
+    "editUser":{
+        "firstName":"First name",
+        "lastName":"Last name",
+        "userName":"User name"
     }
 }

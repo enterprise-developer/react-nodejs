@@ -38,7 +38,7 @@ export class Main{
             modules:[
                 {name: "User management",key:"userManagement", iconCls: "fa fa-user", defaultUri:"/userManagement"}
             ],
-            locales:["layout", "userManagement"]
+            locales:["common", "layout", "userManagement"]
         };
     }
 }
